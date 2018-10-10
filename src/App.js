@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+// import { Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+
 
 import axios from 'axios';
 
-export default class PersonList extends React.Component {
-    state = {
-        ads: []
+class Ads extends Component {
+    constructor() {
+        super();
+        this.state = {
+            ads: []
+        }
     }
-
-
     componentDidMount() {
         axios.get(`https://morning-peak-93595.herokuapp.com/getAllAds`)
             .then(res => {
@@ -19,10 +22,8 @@ export default class PersonList extends React.Component {
     }
     render() {
         return (
-            <div>
-
-
-                <LineChart width={1000} height={900} data={this.state.ads}
+            <div >
+                <LineChart width={1300} height={900} data={this.state.ads}
                            margin={{top: 5, right: 30, left: 20, bottom: 5}}>
                     <XAxis dataKey="creatTime"/>
                     <YAxis/>
@@ -36,3 +37,4 @@ export default class PersonList extends React.Component {
         )
     }
 }
+export default Ads;
