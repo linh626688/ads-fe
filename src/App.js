@@ -10,7 +10,7 @@ export default class PersonList extends React.Component {
 
 
     componentDidMount() {
-        axios.get(`http://localhost:8088/getAllAds`)
+        axios.get(`https://morning-peak-93595.herokuapp.com/getAllAds`)
             .then(res => {
                 const ads = res.data;
                 this.setState({ ads: ads });
