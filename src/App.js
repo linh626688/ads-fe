@@ -17,8 +17,6 @@ export default class PersonList extends React.Component {
                 // console.log(ads[0].fullName);
             })
     }
-
-
     render() {
         return (
             <div>
