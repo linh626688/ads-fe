@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart, Bar , PieChart,Pie } from 'recharts';
 // import { Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 
@@ -13,26 +13,33 @@ class Ads extends Component {
         }
     }
     componentDidMount() {
-        axios.get(`https://morning-peak-93595.herokuapp.com/getAllAds`)
+        axios.get(`http://35.185.80.237:8090/countByOs`)
             .then(res => {
                 const ads = res.data;
                 this.setState({ ads: ads });
                 // console.log(ads[0].fullName);
             })
     }
+
     render() {
         return (
             <div >
-                <LineChart width={1300} height={900} data={this.state.ads}
-                           margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-                    <XAxis dataKey="creatTime"/>
-                    <YAxis/>
+                <BarChart width={600} height={300} data={this.state.ads}
+                          margin={{top: 5, right: 30, left: 20, bottom: 5}}>
                     <CartesianGrid strokeDasharray="3 3"/>
+                    <XAxis dataKey="name"/>
+                    <YAxis/>
                     <Tooltip/>
-                    <Legend/>
-                    <Line type="monotone" dataKey="countTotalShow" stroke="#8884d8" activeDot={{r: 8}}/>
-                    {/*<Line type="monotone" dataKey="totalTime" stroke="#82ca9d"/>*/}
-                </LineChart>
+                    <Legend />
+                    <Bar dataKey="value" fill="#8884d8" />
+                </BarChart>
+
+
+                <PieChart width={800} height={400}>
+                    <Pie isAnimationActive={false} data={this.state.ads} cx={200} cy={200} outerRadius={80} fill="#8884d8" label/>
+                    <Pie data={this.state.ads} cx={500} cy={200} innerRadius={40} outerRadius={80} fill="#82ca9d"/>
+                    <Tooltip/>
+                </PieChart>
             </div>
         )
     }
