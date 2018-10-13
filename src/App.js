@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart, Bar , PieChart,Pie } from 'recharts';
+import {XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart, Bar , PieChart,Pie } from 'recharts';
 // import { Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 
